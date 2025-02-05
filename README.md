@@ -31,7 +31,7 @@
 | name               | string| null: false |
 ### Association
  belongs_to :user
- has_one :purchasers
+ has_one :purchaser
 
 ## destinations テーブル
 
