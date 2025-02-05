@@ -14,7 +14,7 @@
 | birthday           | date   | null: false |
 ### Association
  has_many :items
- belongs_to :purchaser
+ belongs_to :purchasers
 
 ## items テーブル
 
@@ -28,25 +28,27 @@
 | price              | integer| null: false |
 | prefecture_id     | integer| null: false |
 | delivery_day_id   | integer| null: false |
-| item               | strring| null: false |
+| name               | string| null: false |
 ### Association
- belongs_to :user
- has_many :destination
+ belongs_to :users
+ has_many :purchasers
+ 
 
 ## destinations テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | post_cord          | string | null: false |
-| prefecture_id      | string | null: false |
-| municipalities     | string | null: false |
+| prefecture_id      | integer| null: false |
+| municipality       | string | null: false |
 | street_address     | string | null: false |
-| building_name      | string | 
+| building_name      | string | null: false |
 | telephone_number   | string | null: false |
+| purchaser          | string | null: false,foreign_key: true |
 
 ### Association
- belongs_to :items
- has_one :purchaser
+ belongs_to :purchaser
+
 
 
 ## purchasers テーブル
@@ -57,8 +59,9 @@
 | item               |references |foreign_key: true |
 
 ### Association
- belongs_to :destination
- has_one :users
+belongs_to :user
+belongs_to :item
+has_one :destination
 
 
 
