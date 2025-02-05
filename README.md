@@ -11,36 +11,42 @@
 | last_name          | string | null: false |
 | katakana_first_name| string | null: false |
 | katakana_last_name | string | null: false |
+
 ### Association
+ has_many :items
+ belongs_to :purchaser
 
-
-## product テーブル
+## items テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| product            | string | null: false |
+| item               | string | null: false |
 | category           | string | null: false |
-| product description| text   | null: false |
-| product condition  | string | null: false |
+| item description   | text   | null: false |
+| item condition     | string | null: false |
 | shipping fee burden| string | null: false |
 | price              | string | null: false |
 | shipping area      | string | null: false |
 | delivery days      | string | null: false |
 
 ### Association
+ belongs_to :user
+ has_many :purchase information
 
 
 ## purchase information テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| product            | string | null: false |
+| item               | string | null: false |
 | price              | string | null: false |
 | shipping fee burden| string | null: false |
 
 ### Association
+ belongs_to :items
+ has_one :destination
 
-## shipping destination テーブル
+## destination テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
@@ -51,14 +57,21 @@
 | building name      | string | null: false |
 | telephone number   | string | null: false |
 
+### Association
+ belongs_to :purchase information
+ has_one :purchaser
+
+
 ## purchaser テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| purchaser          | string | null: false |
+| purchaser          | string | null: false,foreign_key: true |
 | purchase           | string | null: false |
 
-
+### Association
+ belongs_to :destination
+ has_one :users
 
 
 
