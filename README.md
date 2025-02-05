@@ -21,9 +21,9 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | user               | references| null: false,foreign_key: true |
-| category_id        | string | null: false |
+| category_id        | integer| null: false |
 | item_description   | text   | null: false |
-| item_condition_id  | string | null: false |
+| item_condition_id  | integer| null: false |
 | shipping_fee_burden_id| integer | null: false |
 | price              | integer| null: false |
 | prefecture_id     | integer| null: false |
@@ -32,7 +32,6 @@
 ### Association
  belongs_to :user
  has_one :purchasers
- 
 
 ## destinations テーブル
 
@@ -41,10 +40,10 @@
 | post_cord          | string | null: false |
 | prefecture_id      | integer| null: false |
 | municipality       | string | null: false |
-| street_address     | string | 
-| building_name      | string | null: false |
+| street_address     | string | null: false |
+| building_name      | string | 
 | telephone_number   | string | null: false |
-| purchaser          | reference | null: false,foreign_key: true |
+| purchaser          | references | null: false,foreign_key: true |
 
 ### Association
  belongs_to :purchaser
@@ -55,8 +54,8 @@
 
 | Column             | Type      | Options     |
 | ------------------ | --------- | ----------- |
-| user               | references|foreign_key: true |
-| item               |references |foreign_key: true |
+| user               | references|null: false,foreign_key: true |
+| item               |references |null: false,foreign_key: true |
 
 ### Association
 belongs_to :user
