@@ -11,7 +11,7 @@
 | last_name          | string | null: false |
 | katakana_first_name| string | null: false |
 | katakana_last_name | string | null: false |
-| birthday           | string | null: false |
+| birthday           | date   | null: false |
 ### Association
  has_many :items
  belongs_to :purchaser
@@ -20,24 +20,24 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| user               | string | null: false,foreign_key: true |
+| user               | references| null: false,foreign_key: true |
 | category_id        | string | null: false |
 | item_description   | text   | null: false |
 | item_condition_id  | string | null: false |
 | shipping_fee_burden_id| integer | null: false |
 | price              | integer| null: false |
 | prefecture_id     | integer| null: false |
-| delivery_days_id   | integer| null: false |
-
+| delivery_day_id   | integer| null: false |
+| item               | strring| null: false |
 ### Association
  belongs_to :user
  has_many :destination
 
-## destination テーブル
+## destinations テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| post cord          | string | null: false |
+| post_cord          | string | null: false |
 | prefecture_id      | string | null: false |
 | municipalities     | string | null: false |
 | street_address     | string | null: false |
@@ -49,12 +49,12 @@
  has_one :purchaser
 
 
-## purchaser テーブル
+## purchasers テーブル
 
-| Column              Options     |
-| -------------- -----------------|
-| user          |foreign_key: true |
-| item          |foreign_key: true |
+| Column             | Type      | Options     |
+| ------------------ | --------- | ----------- |
+| user               | references|foreign_key: true |
+| item               |references |foreign_key: true |
 
 ### Association
  belongs_to :destination
