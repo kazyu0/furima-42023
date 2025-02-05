@@ -10,7 +10,7 @@
                 <mxCell id="22" value="ニックネーム&#10;メアド&#10;パスワード&#10;苗字・名前&#10;カタカナで苗字・名前" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontColor=#000000;" vertex="1" parent="21">
                     <mxGeometry y="30" width="160" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="purchases" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fontColor=#FFFFFF;fillColor=#000000;" vertex="1" parent="1">
+                <mxCell id="31" value="purchaser" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fontColor=#FFFFFF;fillColor=#000000;" vertex="1" parent="1">
                     <mxGeometry x="210" y="45" width="160" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="32" value="購入者&#10;購入したもの&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontColor=#000000;" vertex="1" parent="31">
@@ -31,12 +31,6 @@
                 <mxCell id="36" value="商品名&#10;商品画像&#10;カテゴリー&#10;商品説明&#10;商品状態&#10;配送料負担&#10;価格&#10;配送元地域&#10;発送日数" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontColor=#000000;" vertex="1" parent="35">
                     <mxGeometry y="30" width="160" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="purchase information" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;fontColor=#FFFFFF;fillColor=#000000;" vertex="1" parent="1">
-                    <mxGeometry x="340" y="290" width="160" height="120" as="geometry"/>
-                </mxCell>
-                <mxCell id="40" value="商品名&#10;商品画像&#10;価格&#10;配送料負担&#10;カード情報" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontColor=#000000;" vertex="1" parent="39">
-                    <mxGeometry y="30" width="160" height="90" as="geometry"/>
-                </mxCell>
                 <mxCell id="42" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;strokeColor=#000000;fontColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="22">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
                         <mxPoint x="30" y="210" as="sourcePoint"/>
@@ -52,12 +46,6 @@
                 <mxCell id="48" value="名前&#10;都道府県&#10;市区町村&#10;番地&#10;建物名&#10;郵便番号" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontColor=#000000;" vertex="1" parent="47">
                     <mxGeometry y="30" width="160" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="49" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;fontColor=#FFFFFF;exitX=0.125;exitY=1.056;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.621;entryY=0.023;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="48" target="39">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="320" y="330" as="sourcePoint"/>
-                        <mxPoint x="340" y="348" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
                 <mxCell id="50" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#000000;fontColor=#FFFFFF;" edge="1" parent="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="370" y="119.5" as="sourcePoint"/>
@@ -70,7 +58,7 @@
                 <mxCell id="51" value="1" style="resizable=0;html=1;align=right;verticalAlign=bottom;fontColor=#FFFFFF;fillColor=#000000;" connectable="0" vertex="1" parent="50">
                     <mxGeometry x="1" relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;strokeColor=#000000;fontColor=#FFFFFF;" edge="1" parent="1">
+                <mxCell id="53" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;strokeColor=#000000;fontColor=#FFFFFF;exitX=0.341;exitY=1.056;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="48">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
                         <mxPoint x="340" y="340" as="sourcePoint"/>
                         <mxPoint x="260" y="340" as="targetPoint"/>

@@ -11,7 +11,7 @@
 | last_name          | string | null: false |
 | katakana_first_name| string | null: false |
 | katakana_last_name | string | null: false |
-
+| birthday           | string | null: false |
 ### Association
  has_many :items
  belongs_to :purchaser
@@ -20,54 +20,41 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| item               | string | null: false |
-| category           | string | null: false |
-| item description   | text   | null: false |
-| item condition     | string | null: false |
-| shipping fee burden| string | null: false |
-| price              | string | null: false |
-| shipping area      | string | null: false |
-| delivery days      | string | null: false |
+| user               | string | null: false,foreign_key: true |
+| category_id        | string | null: false |
+| item_description   | text   | null: false |
+| item_condition_id  | string | null: false |
+| shipping_fee_burden_id| integer | null: false |
+| price              | integer| null: false |
+| prefecture_id     | integer| null: false |
+| delivery_days_id   | integer| null: false |
 
 ### Association
  belongs_to :user
- has_many :purchase information
-
-
-## purchase information テーブル
-
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| item               | string | null: false |
-| price              | string | null: false |
-| shipping fee burden| string | null: false |
-
-### Association
- belongs_to :items
- has_one :destination
+ has_many :destination
 
 ## destination テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | post cord          | string | null: false |
-| prefecture         | string | null: false |
+| prefecture_id      | string | null: false |
 | municipalities     | string | null: false |
-| street address     | string | null: false |
-| building name      | string | null: false |
-| telephone number   | string | null: false |
+| street_address     | string | null: false |
+| building_name      | string | 
+| telephone_number   | string | null: false |
 
 ### Association
- belongs_to :purchase information
+ belongs_to :items
  has_one :purchaser
 
 
 ## purchaser テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| purchaser          | string | null: false,foreign_key: true |
-| purchase           | string | null: false |
+| Column              Options     |
+| -------------- -----------------|
+| user          |foreign_key: true |
+| item          |foreign_key: true |
 
 ### Association
  belongs_to :destination
