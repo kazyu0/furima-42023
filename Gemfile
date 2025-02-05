@@ -75,3 +75,4 @@ group :production do
   gem 'pg'
 end
 gem 'mysql2', '>= 0.4.4'
+gem 'devise'
