@@ -14,7 +14,7 @@
 | birthday           | date   | null: false |
 ### Association
  has_many :items
- belongs_to :purchasers
+ has_many :purchasers
 
 ## items テーブル
 
@@ -30,8 +30,8 @@
 | delivery_day_id   | integer| null: false |
 | name               | string| null: false |
 ### Association
- belongs_to :users
- has_many :purchasers
+ belongs_to :user
+ has_one :purchasers
  
 
 ## destinations テーブル
@@ -41,10 +41,10 @@
 | post_cord          | string | null: false |
 | prefecture_id      | integer| null: false |
 | municipality       | string | null: false |
-| street_address     | string | null: false |
+| street_address     | string | 
 | building_name      | string | null: false |
 | telephone_number   | string | null: false |
-| purchaser          | string | null: false,foreign_key: true |
+| purchaser          | reference | null: false,foreign_key: true |
 
 ### Association
  belongs_to :purchaser
