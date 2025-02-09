@@ -5,11 +5,11 @@ class Item < ApplicationRecord
   belongs_to :shipping_fee_burden
   belongs_to :prefecture
   belongs_to :delivery_day
-  belongs_to :price
+  has_one_attached :image
 
-  validates :title, :text, presence: true
+  validates :name, presence: true
 
-  validates :category_id_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :shipping_fee_burden_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
