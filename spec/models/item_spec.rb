@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.new(name: "商品名", item_description: "商品の説明", price: 500, category_id: 2, condition_id: 2, shipping_fee_burden_id: 2, prefecture_id: 2, delivery_day_id: 2)
+    @item = FactoryBot.build(name: "商品名", item_description: "商品の説明", price: 500, category_id: 2, condition_id: 2, shipping_fee_burden_id: 2, prefecture_id: 2, delivery_day_id: 2)
   end
 
   describe '商品出品' do
