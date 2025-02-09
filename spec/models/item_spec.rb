@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = Item.new(title: "商品名", text: "商品の説明", price: 500, category_id: 2, condition_id: 2, shipping_fee_burden_id: 2, prefecture_id: 2, delivery_day_id: 2)
+    @item = Item.new(name: "商品名", item_description: "商品の説明", price: 500, category_id: 2, condition_id: 2, shipping_fee_burden_id: 2, prefecture_id: 2, delivery_day_id: 2)
   end
 
   describe '商品出品' do
@@ -14,15 +14,15 @@ RSpec.describe Item, type: :model do
 
   context '商品が出品できない場合' do
     it '商品名が空では出品できない' do
-      @item.title = ''
+      @item.name = ''
       @item.valid?
-      expect(@item.errors.full_messages).to include("Title can't be blank")
+      expect(@item.errors.full_messages).to include("Name can't be blank")
     end
 
     it '商品の説明が空では出品できない' do
-      @item.text = ''
+      @item.name = ''
       @item.valid?
-      expect(@item.errors.full_messages).to include("Text can't be blank")
+      expect(@item.errors.full_messages).to include("Name can't be blank")
     end
 
     it 'カテゴリーの情報が空では出品できない' do
@@ -76,8 +76,9 @@ RSpec.describe Item, type: :model do
     it '価格が半角数値でなければ出品できない' do
       @item.price = '三百'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price は半角数字で入力してください")
+      expect(@item.errors.full_messages).to include("Price は300円から9,999,999円の間で設定してください")
     end
   end
+ end
 end
 
