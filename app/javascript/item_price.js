@@ -14,8 +14,8 @@ function price (){
         const fee = Math.floor(price * 0.1); 
         const profit = price - fee;
 
-        feeDisplay.textContent = `手数料: ${fee} 円`;
-        profitDisplay.textContent = `利益: ${profit} 円`;
+        feeDisplay.textContent = fee;
+        profitDisplay.textContent = profit;
     });
   }
 };
