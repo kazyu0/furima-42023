@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.build(name: "商品名", item_description: "商品の説明", price: 500, category_id: 2, condition_id: 2, shipping_fee_burden_id: 2, prefecture_id: 2, delivery_day_id: 2)
+    @item = FactoryBot.build(:item)
   end
 
   describe '商品出品' do
@@ -44,9 +44,9 @@ RSpec.describe Item, type: :model do
     end
 
     it '商品の状態についての情報が空では出品できない' do
-      @item.condition_id = 1
+      @item.item_condition_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Condition can't be blank")
+      expect(@item.errors.full_messages).to include("Item condition can't be blank")
     end
 
     it '配送料の負担についての情報が空では出品できない' do
