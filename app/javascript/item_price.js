@@ -6,8 +6,8 @@ function price (){
       priceInput.addEventListener("input", function() {
         const price = parseInt(priceInput.value);
         if (isNaN(price) || price <= 0) {
-            feeDisplay.textContent = "手数料: -- 円";
-            profitDisplay.textContent = "利益: -- 円";
+            feeDisplay.textContent = "手数料: -- ";
+            profitDisplay.textContent = "利益: -- ";
             return;
         }
 
