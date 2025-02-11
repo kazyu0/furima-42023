@@ -44,7 +44,7 @@ RSpec.describe Item, type: :model do
     end
 
     it '商品の状態についての情報が空では出品できない' do
-      @item.item_condition_id = 1
+      @item.condition_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Item condition can't be blank")
     end
