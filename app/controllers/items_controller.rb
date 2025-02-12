@@ -19,10 +19,16 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    @user = @item.user 
-    @items = @user.items
+    @item = Item.find_by(id: params[:id])
+    if @item.nil?
+      flash[:alert] = "Item not found"
+      redirect_to items_path
+    else
+      @user = @item.user
+      @items = @user.items
+    end
   end
+
 
 
 private
