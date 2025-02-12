@@ -22,8 +22,8 @@
 | ------------------ | ------ | ----------- |
 | user               | references| null: false,foreign_key: true |
 | category_id        | integer| null: false |
-| item_description   | text   | null: false |
-| item_condition_id  | integer| null: false |
+| description   | text   | null: false |
+| condition_id  | integer| null: false |
 | shipping_fee_burden_id| integer | null: false |
 | price              | integer| null: false |
 | prefecture_id     | integer| null: false |
@@ -54,7 +54,7 @@
 
 | Column             | Type      | Options     |
 | ------------------ | --------- | ----------- |
-| user               | references|null: false,foreign_key: true |
+| user               |references |null: false,foreign_key: true |
 | item               |references |null: false,foreign_key: true |
 
 ### Association

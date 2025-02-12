@@ -18,10 +18,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+    if @item.nil?
+      flash[:alert] = "Item not found"
+      redirect_to items_path
+    end
+  end
+
+
 
 private
 
   def item_params
-  params.require(:item).permit( :image, :name, :item_description, :category_id, :item_condition_id, :shipping_fee_burden_id, :prefecture_id, :delivery_day_id, :price).merge(user_id: current_user.id)
+  params.require(:item).permit( :image, :name, :description, :category_id, :condition_id, :shipping_fee_burden_id, :prefecture_id, :delivery_day_id, :price).merge(user_id: current_user.id)
   end
 end
