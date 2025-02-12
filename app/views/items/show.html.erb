@@ -9,11 +9,11 @@
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-        <% if @item.purchaser %>
+        
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-      <% end %>
+      
 
       <%# //商品が売れている場合は、sold outを表示しましょう %>
     </div>
@@ -26,26 +26,19 @@
       </span>
     </div>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-  <% if user_signed_in? && current_user.id == @item.user_id %>
+   <% if user_signed_in? %>
+   <% if current_user.id == @item.user_id %>
     <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", "#", data: {turbo_method: :delete}, class:"item-destroy" %>
-  
-    
-
-
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <% elsif user_signed_in? && current_user.id != @item.user_id && @item.sold_out? %>
+   <% else %>
     <%= link_to "購入画面に進む",  new_item_order_path(@item),class:"item-red-btn"%>
+    <% end %>
     <% end %>
     
 
-
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-    
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= @item.description %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -98,7 +91,7 @@
       </p>
       <button type="submit" class="comment-btn">
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
+        <span>コメントする</span>
       </button>
     </form>
   </div>
@@ -110,9 +103,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+  <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
