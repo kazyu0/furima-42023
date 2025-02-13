@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :show]
   before_action :authorize_user, only: [:edit, :update]
 
 
@@ -22,17 +22,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if @item.nil?
-      flash[:alert] = "Item not found"
-      redirect_to items_path
-    end
   end
 
-  def exit
+  def edit
    
   end
 
   def update
+    if @item.update(item_params)
       redirect_to @item, notice: '商品情報を更新しました。'
     else
       flash[:alert] = @item.errors.full_messages.join(", ")
@@ -50,6 +47,7 @@ private
 
   def set_item
     @item = Item.find(params[:id])
+    
   end
 
   def authorize_user
