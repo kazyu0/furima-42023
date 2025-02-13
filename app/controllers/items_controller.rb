@@ -22,15 +22,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     if @item.nil?
       flash[:alert] = "Item not found"
       redirect_to items_path
     end
-  end
-
-  def edit
-    @item = Item.find(params[:id])
   end
 
   def update
