@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:edit, :update, :show]
-  before_action :authorize_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
 
   def index
@@ -35,6 +35,14 @@ class ItemsController < ApplicationController
       flash[:alert] = @item.errors.full_messages.join(", ")
       render :edit
     end
+  end
+
+  def destroy
+    if @item.destroy
+    redirect_to root_path, notice: '商品を削除しました。'
+  else
+    redirect_to @item, alert: '商品を削除できませんでした。'
+  end
   end
 
 
