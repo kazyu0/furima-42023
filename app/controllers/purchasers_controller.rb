@@ -10,9 +10,9 @@ class PurchasersController < ApplicationController
     @purchaser_destination = PurchaserDestination.new(purchaser_destination_params)
     if @purchaser_destination.valid?
       @purchaser_destination.save
-      redirect_to purchase_confirmation_path(@item), notice: "Purchase was successful!"
+      redirect_to purchase_confirmation_path(@item), notice: "Purchase was successful create"
     else
-      render :index
+      render :index, status: :unprocessable_entity
     end
   end
 

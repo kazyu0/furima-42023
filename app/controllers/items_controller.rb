@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path,notice: 'Item was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-   
   end
 
   def update
@@ -34,7 +33,7 @@ class ItemsController < ApplicationController
       redirect_to @item, notice: '商品情報を更新しました。'
     else
       flash[:alert] = @item.errors.full_messages.join(", ")
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
