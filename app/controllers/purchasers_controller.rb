@@ -17,12 +17,12 @@ class PurchasersController < ApplicationController
   end
 
   
-
+  
 
   private
 
   def purchaser_destination_params
-    params.require(:purchaser_destination).permit(:purchaser_id, :item_id, :post_code, :prefecture_id, :city_code, :street_addresses, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:purchaser_destination).permit(:purchaser_id, :item_id, :post_code, :prefecture_id, :city_code, :street_address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 end
 
