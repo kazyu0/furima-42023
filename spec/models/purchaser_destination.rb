@@ -10,7 +10,7 @@ class PurchaserDestination
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'は10桁または11桁の半角数字で入力してください' }
     validates :purchaser
     validates :item_id
-  #validates :token
+    validates :token
     validates :building_name
   end
 end
