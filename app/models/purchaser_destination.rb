@@ -6,11 +6,11 @@ class PurchaserDestination
   with_options presence: true do
     validates :user_id
     validates :city
-    validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is not a valid postal code" }
+    validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: "is not a valid post code" }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :street_address
     
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "is not a valid postal code" }
+    validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/, message: "is not a valid post code" }
     validates :item_id
     validates :token, presence: true
   

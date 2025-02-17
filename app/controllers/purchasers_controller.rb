@@ -1,4 +1,7 @@
 class PurchasersController < ApplicationController
+  before_action :set_item
+  before_action :check_item_status
+
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -34,6 +37,19 @@ class PurchasersController < ApplicationController
 
   def purchaser_destination_params
     params.require(:purchaser_destination).permit(:purchaser_id, :item_id, :post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number ).merge(token: params[:token], user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def set_item
+    @item = Item.find_by(id: params[:item_id])
+    end
+ 
+
+  def check_item_status
+    if @item.user_id == current_user.id
+      redirect_to root_path, alert: "自身が出品した商品の購入はできません。"
+    elsif  @item.purchaser.present? 
+    redirect_to root_path, alert: "この商品はすでに売り切れています。"
+    end
   end
 end
 

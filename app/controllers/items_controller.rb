@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   before_action :authorize_user, only: [:edit, :update, :destroy]
   
 
+  
+
 
   def index
     @items= Item.order(created_at: :desc)
@@ -23,7 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-   
+
   end
 
   def edit
@@ -66,4 +68,6 @@ private
       redirect_to root_path, alert: 'あなたにはこの商品の編集権限がありません。'
     end
   end
+
+ 
 end
