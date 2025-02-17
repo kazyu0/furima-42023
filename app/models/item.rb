@@ -9,10 +9,9 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :purchaser
 
-  #has_one :purchaser
-  #def sold_out?
-    #purchaser.present? 
-  #end
+   def sold_out?
+    @item.present? 
+   end
   validates :description, presence: true
   validates :name, presence: true
   validates :image, presence: true
