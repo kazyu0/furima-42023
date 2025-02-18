@@ -69,6 +69,10 @@ RSpec.describe PurchaserDestination, type: :model do
         @purchaser_destination.phone_number = '1234567'
         @purchaser_destination.valid?
         expect(@purchaser_destination.errors.full_messages).to include "Phone number is not a valid post code"
+
+        @purchaser_destination.phone_number = '090123456789'
+        @purchaser_destination.valid?
+        expect(@purchaser_destination.errors.full_messages).to include "Phone number is not a valid post code"
       end
     end
 
@@ -77,6 +81,27 @@ RSpec.describe PurchaserDestination, type: :model do
         @purchaser_destination.token = nil
         @purchaser_destination.valid?
         expect(@purchaser_destination.errors.full_messages).to include "Token can't be blank"
+      end
+    end
+
+    context '建物名が空でも保存できる場合' do
+      it '建物名が空でも保存できる' do
+        @purchaser_destination.building_name = ''
+        expect(@purchaser_destination).to be_valid
+      end
+    end
+
+    context 'userとitemが紐付いていない場合' do
+      it 'userが紐付いていないと保存できない' do
+        @purchaser_destination.user_id = nil
+        @purchaser_destination.valid?
+        expect(@purchaser_destination.errors.full_messages).to include "User can't be blank"
+      end
+
+      it 'itemが紐付いていないと保存できない' do
+        @purchaser_destination.item_id = nil
+        @purchaser_destination.valid?
+        expect(@purchaser_destination.errors.full_messages).to include "Item can't be blank"
       end
     end
   end
