@@ -7,11 +7,9 @@ class Item < ApplicationRecord
   belongs_to :delivery_day
   has_one_attached :image
   belongs_to :user
+  has_one :purchaser
 
-  #has_one :purchaser
-  #def sold_out?
-    #purchaser.present? 
-  #end
+
   validates :description, presence: true
   validates :name, presence: true
   validates :image, presence: true

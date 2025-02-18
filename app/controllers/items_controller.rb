@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :authorize_user, only: [:edit, :update, :destroy]
+  
+
+  
 
 
   def index
@@ -17,15 +20,15 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path,notice: 'Item was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def show
+
   end
 
   def edit
-   
   end
 
   def update
@@ -33,7 +36,7 @@ class ItemsController < ApplicationController
       redirect_to @item, notice: '商品情報を更新しました。'
     else
       flash[:alert] = @item.errors.full_messages.join(", ")
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -44,6 +47,8 @@ class ItemsController < ApplicationController
     redirect_to @item, alert: '商品を削除できませんでした。'
   end
   end
+
+  
 
 
 
@@ -61,6 +66,10 @@ private
   def authorize_user
     if @item.user_id != current_user.id
       redirect_to root_path, alert: 'あなたにはこの商品の編集権限がありません。'
+    elsif @item.purchaser.present?
+      redirect_to root_path, alert: '売り切れた商品の編集はできません。'
     end
   end
+
+ 
 end
