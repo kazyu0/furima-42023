@@ -12,6 +12,11 @@ RSpec.describe PurchaserDestination, type: :model do
       it '全ての項目が正しく入力されていればバリデーションを通過する' do
         expect(@purchaser_destination).to be_valid
       end
+
+      it '建物名が空でも保存できる' do
+        @purchaser_destination.building_name = ''
+        expect(@purchaser_destination).to be_valid
+      end
     end
 
     context '郵便番号が無効な場合' do
@@ -65,7 +70,7 @@ RSpec.describe PurchaserDestination, type: :model do
         expect(@purchaser_destination.errors.full_messages).to include "Phone number is not a valid post code"
       end
 
-      it '電話番号が10桁未満または11桁以上の場合、無効である' do
+      it '電話番号が10桁未満または12桁以上の場合、無効である' do
         @purchaser_destination.phone_number = '1234567'
         @purchaser_destination.valid?
         expect(@purchaser_destination.errors.full_messages).to include "Phone number is not a valid post code"
@@ -81,13 +86,6 @@ RSpec.describe PurchaserDestination, type: :model do
         @purchaser_destination.token = nil
         @purchaser_destination.valid?
         expect(@purchaser_destination.errors.full_messages).to include "Token can't be blank"
-      end
-    end
-
-    context '建物名が空でも保存できる場合' do
-      it '建物名が空でも保存できる' do
-        @purchaser_destination.building_name = ''
-        expect(@purchaser_destination).to be_valid
       end
     end
 
