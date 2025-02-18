@@ -10,9 +10,9 @@ class PurchaserDestination
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :street_address
     
-    validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/, message: "is not a valid post code" }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "is not a valid post code" }
     validates :item_id
-    validates :token, presence: true
+    validates :token
   
   end
 

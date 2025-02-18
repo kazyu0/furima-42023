@@ -1,16 +1,15 @@
 class PurchasersController < ApplicationController
+  before_action :authenticate_user! 
   before_action :set_item
   before_action :check_item_status
 
 
   def index
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]  
     @purchaser_destination = PurchaserDestination.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchaser_destination = PurchaserDestination.new(purchaser_destination_params)
 
     if @purchaser_destination.valid?
@@ -36,7 +35,7 @@ class PurchasersController < ApplicationController
   private
 
   def purchaser_destination_params
-    params.require(:purchaser_destination).permit(:purchaser_id, :item_id, :post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number ).merge(token: params[:token], user_id: current_user.id, item_id: params[:item_id])
+    params.require(:purchaser_destination).permit(:post_code, :prefecture_id, :city, :street_address, :building_name, :phone_number ).merge(token: params[:token], user_id: current_user.id, item_id: params[:item_id])
   end
 
   def set_item

@@ -66,6 +66,8 @@ private
   def authorize_user
     if @item.user_id != current_user.id
       redirect_to root_path, alert: 'あなたにはこの商品の編集権限がありません。'
+    elsif @item.purchaser.present?
+      redirect_to root_path, alert: '売り切れた商品の編集はできません。'
     end
   end
 
